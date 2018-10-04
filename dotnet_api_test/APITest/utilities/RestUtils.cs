@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace APITest.utilities
@@ -85,7 +86,7 @@ namespace APITest.utilities
             bool isCorrect = false;
             JObject joResponse = JObject.Parse(rResp.Content);
             JArray array = (JArray)joResponse["results"];
-            System.Console.WriteLine(">>>>>: \"" + array.Count + "\"");
+            Console.WriteLine(">>>>>: \"" + array.Count + "\"");
             if (array.Count == expected)
             {
                 isCorrect = true;
@@ -93,5 +94,21 @@ namespace APITest.utilities
 
             return isCorrect;
         }
+
+        public static string GetFirstName()
+        {
+            var result = string.Empty;
+
+            JObject joResponse = JObject.Parse(rResp.Content);
+            
+            var res = (JArray)joResponse["results"];
+
+            if (res.HasValues)
+                result = res[0]["name"].ToString();
+
+            Console.WriteLine(string.Format("Name of closest petrol station: {0}", result));
+            return result;
+        }
+        
     }
 }

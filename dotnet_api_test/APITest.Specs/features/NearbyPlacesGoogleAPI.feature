@@ -13,13 +13,13 @@ Scenario: Find nearest restaurant within the nearest 500m radius of parnell (rep
 	When I execute the said request
 	Then I should have "20" results
 
-Scenario: Find nearest petro station
+Scenario: Find nearest petrol station
 	Given I am using the google maps api "https://maps.googleapis.com"
 	And access to the "/maps/api/place/nearbysearch/json?" resource with "get" as a method	
 	And I add parameter "key" with value "AIzaSyBLzFAnW-1XE28hZ2BpJxcpGOquAdBZ8sQ"
 	And I add parameter "location" with value "-36.854065,174.779877"
-	And I add parameter "type" with value "petrol station"
-	And I add parameter "radius" with value "500"
+	And I add parameter "keyword" with value "petrol station"	
+	And I add parameter "rankby" with value "distance"
 	When I execute the said request
-	Then I should have "20" results
+	Then I should receive the name
 

@@ -40,6 +40,13 @@ namespace APITest.Specs
             
         }
 
+        [Then(@"I should receive the name")]
+        public void ThenIShouldReceiveTheName()
+        {
+            Assert.IsNotEmpty(RestUtils.GetFirstName(), "Check if first name is not empty");
+        }
+
+
         [AfterScenario]
         public void ClearUsedResources()
         {

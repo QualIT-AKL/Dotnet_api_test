@@ -6,7 +6,7 @@
 Scenario: Find nearest restaurant within the nearest 500m radius of parnell (represented in the longitude/latitude)
 	Given I am using the google maps api "https://maps.googleapis.com"
 	And access to the "/maps/api/place/nearbysearch/json?" resource with "get" as a method
-	And I add parameter "key" with value "AIzaSyA2iI1EqjmnjXix_vBAzKtrCOXOETB-YvE"
+	And I add parameter "key" with value "API_KEY"
 	And I add parameter "location" with value "-36.854065,174.779877"
 	And I add parameter "type" with value "restaurant"
 	And I add parameter "radius" with value "500"
